@@ -1,0 +1,393 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "amd": true,
+    "es6": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    // ECMAScript 版本
+    "ecmaVersion": 6,
+    "sourceType": "module", //设置为 "script" (默认) 或 "module"（如果你的代码是 ECMAScript 模块)。
+    //想使用的额外的语言特性:
+    "ecmaFeatures": {
+      // 启用 JSX
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "rules": {
+    // 定义了未使用的变量 警告
+    "no-unused-vars": "warn",
+    "no-misleading-character-class": "off",
+    // 缩进 2 空格
+    "indent": [
+      "error",
+      2
+    ],
+    "object-property-newline": "off",
+    "no-undef": "warn",
+    // 禁止给函数参数重新赋值
+    "no-param-reassign": "error",
+    // 要求中缀操作符周围必须有空格
+    "space-infix-ops": "error",
+    // 使用const定义不修改的值
+    "prefer-const": [
+      "warn",
+      {
+        "destructuring": "all",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    // 要求构造函数首字母大写
+    "new-cap": [
+      "error",
+      {
+        "capIsNew": false
+      }
+    ],
+    // const 定义的变量不能修改
+    "no-const-assign": "error",
+    // 不能使用 var 来定义变量
+    "no-var": "error",
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": true,
+        "classes": true,
+        "variables": true
+      }
+    ],
+    // 降低调试文档的报错级别
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-label-var": "error",
+    // 禁止使用 new Object()
+    "no-new-object": "error",
+    // 要求对象字面量简写语法
+    "object-shorthand": [
+      "error",
+      "always",
+      {"avoidExplicitReturnArrows": false}
+    ],
+    // 禁止使用 new Array()
+    "no-array-constructor": "error",
+    // 强制数组方法的回调函数中有 return 语句
+    "array-callback-return": "error",
+    // 对象和数组使用解构, 强制对象解构, 数组不强制
+    "prefer-destructuring": [
+      "error",
+      {
+        "array": false,
+        "object": true
+      },
+      {
+        "enforceForRenamedProperties": false
+      }
+    ],
+    // 字符串使用单引号
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    // 强制在 JSX 属性中使用一致的单引号
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    // 必须使用模板字符串
+    "prefer-template": "error",
+    // 模板字符串中 ${} 中变量必须有有前后空格 eg: ${ name }
+    "template-curly-spacing": [
+      "error",
+      "always"
+    ],
+    // 函数定义使用函数表达式而不是函数声明
+    "func-style": [
+      "error",
+      "expression"
+    ],
+    // 禁止在循环中创建函数
+    "no-loop-func": "error",
+    // 使用剩余参数代替 arguments, 禁止使用 arguments 对象, 应该使用剩余参数
+    "prefer-rest-params": "error",
+    // 禁止使用 new Function 创建一个函数
+    "no-new-func": "error",
+    // 代码块之前要使用至少一个空格
+    "space-before-blocks": [
+      "error",
+      {
+        "functions": "always",
+        "keywords": "always",
+        "classes": "always"
+      }
+    ],
+    // 箭头函数 => 前后空格保持一致
+    "arrow-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    // 关键字前后空格
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    // 使用扩展语法
+    "prefer-spread": "error",
+    // 当函数参数大于等于 4 个时换行
+    "function-paren-newline": [
+      "error",
+      {
+        "minItems": 4
+      }
+    ],
+    // 箭头函数参数在必要的时候必须用圆括号包裹起来
+    "arrow-parens": [
+      "error",
+      "as-needed",
+      {
+        "requireForBlockBody": false
+      }
+    ],
+    // 当大括号是可以省略的，强制不使用它们
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
+    // 禁止在可能与比较操作符相混淆的地方使用箭头函数
+    "no-confusing-arrow": [
+      "error",
+      {
+        "allowParens": true
+      }
+    ],
+    // 强制隐式返回的箭头函数体的位置
+    "implicit-arrow-linebreak": [
+      "error",
+      "beside"
+    ],
+    // 不能有空的构造函数
+    "no-useless-constructor": "error",
+    // 禁止重复导入模块
+    "no-duplicate-imports": [
+      "error",
+      {
+        "includeExports": true
+      }
+    ],
+    // 属性访问使用 '.'
+    "dot-notation": "error",
+    // 禁止连续赋值 eg: let a = b =1; 不好
+    "no-multi-assign": "error",
+    // 禁止使用一元运算符
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    // 换行是操作符在前面
+    "operator-linebreak": [
+      "error",
+      "before"
+    ],
+    // 每一行最多的长度
+    "max-len": [
+      "error",
+      {
+        "code": 130,
+        "comments": 180,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreTrailingComments": true
+      }
+    ],
+    // 强制使用 === / !==
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    // 禁止使用嵌套的三元表达式
+    "no-nested-ternary": "error",
+    // 禁止不必要的三元表达式
+    "no-unneeded-ternary": [
+      "error",
+      {
+        "defaultAssignment": false
+      }
+    ],
+    // 大括号风格要求
+    "brace-style": [
+      "error",
+      "stroustrup",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    // 禁止在 return 之后有 else if 块
+    "no-else-return": [
+      "error",
+      {
+        "allowElseIf": false
+      }
+    ],
+    // '//' 或 '/*' 必须跟随至少一个空白。
+    "spaced-comment": [
+      "error",
+      "always"
+    ],
+    // 要求方法链中每个调用都有一个换行符
+    "newline-per-chained-call": [
+      "error",
+      {
+        "ignoreChainWithDepth": 2
+      }
+    ],
+    // 禁止属性前有空白
+    "no-whitespace-before-property": "error",
+    // 禁止圆括号里阿尼有空格
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    // 强制在中括号两边不能使用空格
+    "array-bracket-spacing": [
+      "error",
+      "never"
+    ],
+    // 强制大括号两边有空格
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    // 强制在代码块中开括号前和闭括号后有空格
+    "block-spacing": "error",
+    // 逗号前不能有空格, 后面必须有一个空格
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    // 强制在计算属性中不使用使用空格
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    // 禁止在函数标识符和其调用之间有空格
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
+    // 强制在对象字面量的键和值之间使用一致的空格
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false,
+        "afterColon": true,
+      }
+    ],
+    "no-trailing-spaces": [
+      "error",
+      {
+        "skipBlankLines": false,
+        "ignoreComments": false
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 1,
+        "maxBOF": 1
+      }
+    ],
+    // 逗号风格
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    // 句末分号不可省略
+    "semi": [
+      "error",
+      "always",
+      {
+        "omitLastInOneLineBlock": true
+      }
+    ],
+    // 禁止使用 new Number()/String()/Boolean()
+    "no-new-wrappers": "error",
+    // 强制使用 parseInt 使用基数 eg: parseInt('071', 10) => 71
+    "radix": "error",
+    // 标识符最少长度为 2
+    "id-length": "error",
+    // 驼峰命名
+    "camelcase": [
+      "warn",
+      {
+        "allow": [
+          "^UNSAFE_"
+        ]
+      }
+    ],
+    // "max-lines-per-function": ["error", {"max": 60, "skipBlankLines": true, "skipComments": true}]
+    // 强制文件去除空行和纯注释最多 500 行
+    "max-lines": [
+      "error",
+      500
+    ],
+    // 控制语句最大嵌套为 4 层
+    "max-depth": [
+      "error",
+      4
+    ],
+    // 强制定义函数中的参数 最多 3 个
+    "max-params": [
+      "warn",
+      3
+    ],
+    "new-parens": "error",
+    // 禁止 if 语句作为唯一语句出现在 else 语句块中
+    "no-lonely-if": "error",
+    // 每一个变量都要声明
+    "one-var": [
+      "error",
+      "never"
+    ],
+    // react/jsx
+    "react/display-name": [
+      "warn"
+    ],
+    "react/prop-types": [
+      "off"
+    ],
+    "@typescript-eslint/indent": ["error", 2]
+  }
+}

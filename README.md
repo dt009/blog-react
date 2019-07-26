@@ -1,2 +1,2 @@
-# blog-react
-react  typescript 搭建的博客
+# react-blog
+react 搭建的博客
