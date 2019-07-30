@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-25 16:10:58
+ * @LastEditTime: 2019-07-29 17:02:05
  */
 
 const webpack = require('webpack');
@@ -25,7 +25,13 @@ module.exports = {
         vendor: {
           filename: '[name].bundle.js',
           chunks: 'all',
-        }
+        },
+        styles: {
+          name: 'styles',
+          test: /\.(scss|css)$/,
+          chunks: 'all',
+          enforce: true,
+        },
       }
     }
   },
@@ -37,7 +43,7 @@ module.exports = {
   },
 
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name].[chunkhash:6].js',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/'
   },
@@ -99,7 +105,7 @@ module.exports = {
       template: path.resolve(__dirname, '../public/index.html'),
       title: config.pageTitle
     }),
-    // new StyleLintPlugin(),
+    new StyleLintPlugin(),
     new webpack.HashedModuleIdsPlugin(),
   ]
 };

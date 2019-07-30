@@ -8,6 +8,6 @@
     "lib": ["es2015", "es6", "dom"]
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*", "typings/index.d.ts", "typings"
   ]
 }

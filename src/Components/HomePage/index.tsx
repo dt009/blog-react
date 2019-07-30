@@ -5,12 +5,13 @@
  * @Date: 2019-07-23 22:14:08
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-25 16:13:26
+ * @LastEditTime: 2019-07-30 17:33:35
  */
 
 import * as React from 'react';
-import './index.css';
+import * as PageCss from './index.scss';
 
+import * as ImgIcon from './img2.jpg';
 export interface HelloProps { compiler: string; framework: string }
 
 // 'HelloProps' describes the shape of props.
@@ -25,8 +26,9 @@ export class Hello extends React.Component<HelloProps, {name: string}> {
   public render(): object {
 
     return (
-      <h1 className={'title'}>
+      <h1 className={`${ PageCss.title } ${ PageCss.container } `}>
         Hello { this.state.name } from { this.props.compiler } and { this.props.framework }!
+        <img src={ImgIcon} alt=""/>
       </h1>
     );
   }

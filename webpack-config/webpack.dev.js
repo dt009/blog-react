@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-25 16:15:54
+ * @LastEditTime: 2019-07-29 17:04:45
  */
 
 const merge = require('webpack-merge');
@@ -13,6 +13,8 @@ const common = require('./webpack.common');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -33,15 +35,23 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         include: path.resolve(__dirname, '../src/Components'),
         use: [
-          'style-loader',
           {
-            loader: 'css-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              sourceMap: true,
-              // module: {
-              //   mode: 'local',
-              //   localIdentName: '[path][name]-[local]-[hash:base64:6]',
-              // }
+              // only enable hot in development
+              hmr: process.env.NODE_ENV === 'development',
+              // if hmr does not work, this is a forceful method.
+              reloadAll: true,
+            },
+          },
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              namedExport: true,
+              camelCase: true,
+              minimize: true,
+              localIdentName: '[local]_[hash:base64:5]'
             }
           },
           {
@@ -69,15 +79,23 @@ module.exports = merge(common, {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
-          { loader: 'style-loader' },
           {
-            loader: 'css-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              sourceMap: true,
-              // module: {
-              //   mode: 'local',
-              //   localIdentName: '[path][name]-[local]-[hash:base64:6]',
-              // }
+              // only enable hot in development
+              hmr: process.env.NODE_ENV === 'development',
+              // if hmr does not work, this is a forceful method.
+              reloadAll: true,
+            },
+          },
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              namedExport: true,
+              camelCase: true,
+              minimize: true,
+              localIdentName: '[local]_[hash:base64:5]'
             }
           },
           {
@@ -110,6 +128,14 @@ module.exports = merge(common, {
       }
     ]
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
 
   devServer: {
     contentBase: '.dist',
