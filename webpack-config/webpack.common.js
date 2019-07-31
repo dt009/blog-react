@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-29 17:02:05
+ * @LastEditTime: 2019-07-31 11:41:02
  */
 
 const webpack = require('webpack');
@@ -27,7 +27,7 @@ module.exports = {
           chunks: 'all',
         },
         styles: {
-          name: 'styles',
+          name: '[chunkhash]',
           test: /\.(scss|css)$/,
           chunks: 'all',
           enforce: true,

@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --progress --config ./webpack-config/webpack.dev.js",
-    "build": "webpack --config ./webpack-config/webpack.dev.js",
+    "build": "webpack --config ./webpack-config/webpack.prod.js",
     "start": "node ./server/server.js"
   },
   "dependencies": {
@@ -43,6 +43,7 @@
     "html-webpack-plugin": "^3.2.0",
     "koa": "^2.7.0",
     "koa2-connect-history-api-fallback": "^0.1.2",
+    "markdown-it-react-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -57,6 +58,7 @@
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
+    "stylelint-config-css-modules": "^1.4.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-webpack-plugin": "^0.10.5",
     "ts-loader": "^6.0.4",

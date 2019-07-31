@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-25 16:11:09
+ * @LastEditTime: 2019-07-31 11:43:26
  */
 
 const merge = require('webpack-merge');
@@ -15,19 +15,19 @@ const webpack = require('webpack');
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = merge(common, {
   mode: 'production',
   entry: {
-    app: './src/index.js',
+    app: path.resolve(__dirname, '../src/index.tsx'),
     react: 'react',
     reactDom: 'react-dom',
-    reactRouterDom: 'react-router-dom'
+    reactRouter: 'react-router-dom'
   },
 
   output: {
-    filename: 'js/[name].[contenthash].js',
+    filename: 'js/[name].[chunkhash:6].js',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/'
   },
@@ -45,18 +45,85 @@ module.exports = merge(common, {
 
   module: {
     rules: [
-      // {
-      //     test: /\.css$/,
-      //     use: [
-      //         {
-      //             loader: MiniCssExtractPlugin.loader,
-      //             options: {
-      //                 publicPath: '/'
-      //             }
-      //         },
-      //         {loader: 'happypack/loader?id=css'},
-      //     ]
-      // }
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, '../src/Components'),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              namedExport: true,
+              camelCase: true,
+              minimize: true,
+              localIdentName: '[local]_[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  overrideBrowserslist: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9' // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009'
+                })
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              namedExport: true,
+              camelCase: true,
+              minimize: true,
+              localIdentName: '[local]_[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  overrideBrowserslist: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9' // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009'
+                })
+              ]
+            }
+          },
+          {
+            loader: 'sass-loader',
+          }
+        ]
+      }
     ]
   },
 
@@ -66,10 +133,7 @@ module.exports = merge(common, {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
-      chunkFilename: 'css/[name].[contenthash].css'
+      chunkFilename: 'css/[contenthash].css'
     }),
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '../')
-    })
   ]
 });
