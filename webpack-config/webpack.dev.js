@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-29 17:04:45
+ * @LastEditTime: 2019-08-02 09:40:02
  */
 
 const merge = require('webpack-merge');
@@ -32,7 +32,7 @@ module.exports = merge(common, {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: [/dt\..*\.css$/, /node_modules/],
         include: path.resolve(__dirname, '../src/Components'),
         use: [
           {
@@ -53,6 +53,44 @@ module.exports = merge(common, {
               minimize: true,
               localIdentName: '[local]_[hash:base64:5]'
             }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  overrideBrowserslist: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9' // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009'
+                })
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /dt\..*\.css$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, '../src/Components'),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // only enable hot in development
+              hmr: process.env.NODE_ENV === 'development',
+              // if hmr does not work, this is a forceful method.
+              reloadAll: true,
+            },
+          },
+          {
+            loader: 'css-loader',
           },
           {
             loader: 'postcss-loader',

@@ -5,16 +5,11 @@
  * @Date: 2019-07-23 22:13:26
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-26 13:04:23
+ * @LastEditTime: 2019-08-02 09:39:09
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { Hello } from './Components/HomePage/index';
 
@@ -27,8 +22,8 @@ class APP extends React.Component {
       <div>
         <Router>
           <Switch>
-            <Route exact path="/" render={(): object => <Redirect to="/hello" /> } />
-            <Route path="/hello" component={Hello} />
+            <Route exact path="/" render={ (): object => <Redirect to="/hello" /> } />
+            <Route path="/hello" component={ Hello } />
           </Switch>
         </Router>
       </div>
@@ -36,5 +31,4 @@ class APP extends React.Component {
   }
 }
 
-ReactDOM.render(<APP />,
-  document.getElementById('app'));
+ReactDOM.render(<APP />, document.getElementById('app'));

@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-31 11:41:02
+ * @LastEditTime: 2019-08-02 13:37:24
  */
 
 const webpack = require('webpack');
@@ -27,7 +27,7 @@ module.exports = {
           chunks: 'all',
         },
         styles: {
-          name: '[chunkhash]',
+          name: 'style',
           test: /\.(scss|css)$/,
           chunks: 'all',
           enforce: true,
@@ -55,7 +55,13 @@ module.exports = {
       '.web.js', '.mjs', '.web.jsx',
       '.scss', '.css', '.json',
       '.jpg', '.png', '.gif', '.jpeg', '.svg',
-    ]
+    ],
+    alias: {
+      comp: path.resolve(__dirname, '../src/component/'),
+      utils: path.resolve(__dirname, '../src/utils/'),
+      public: path.resolve(__dirname, '../src/public/'),
+      common: path.resolve(__dirname, '../src/common/')
+    },
   },
 
   module: {
@@ -95,6 +101,18 @@ module.exports = {
           limit: 10000,
           name: 'iconfont/[name].[ext]'
         }
+      },
+      {
+        test: /\.md$/,
+        use: [
+          { loader: 'babel-loader' },
+          {
+            loader: path.resolve(__dirname, './mylLoader/testLoader.js'),
+            options: {
+              type: 'react'
+            }
+          },
+        ]
       }
     ]
   },

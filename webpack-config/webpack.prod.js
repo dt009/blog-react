@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-31 11:43:26
+ * @LastEditTime: 2019-08-02 10:38:54
  */
 
 const merge = require('webpack-merge');
@@ -47,7 +47,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: [/dt\..*\.css$/, /node_modules/],
         include: path.resolve(__dirname, '../src/Components'),
         use: [
           {
@@ -67,6 +67,38 @@ module.exports = merge(common, {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  overrideBrowserslist: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9' // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009'
+                })
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /dt\..*\.css$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, '../src/Components'),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
               plugins: () => [
                 require('postcss-flexbugs-fixes'),
                 autoprefixer({
