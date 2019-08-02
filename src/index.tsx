@@ -5,13 +5,15 @@
  * @Date: 2019-07-23 22:13:26
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-02 09:39:09
+ * @LastEditTime: 2019-08-02 16:28:48
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-
+import setHtmlFont from './utils/adaptive/index';
 import { Hello } from './Components/HomePage/index';
+import './public/css/dt.reset.css';
+setHtmlFont();
 
 class APP extends React.Component {
   /**

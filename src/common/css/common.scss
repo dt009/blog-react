@@ -1,0 +1,25 @@
+/**
+ * @Description: Do not edit
+ * @Author: 段涛
+ * @AuthorEmail: 18363625031@163.com
+ * @Date: 2019-08-02 16:33:29
+ * @LastEditors: 段涛
+ * @AuthorMobile: 18363625031
+ * @LastEditTime: 2019-08-02 17:23:32
+ */
+
+@mixin fontSize($size) {
+  font-size: $size;
+
+  [data-dpr="2"] & {
+    font-size: $size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $size * 3;
+  }
+
+  [data-dpr="4"] & {
+    font-size: $size * 4;
+  }
+}

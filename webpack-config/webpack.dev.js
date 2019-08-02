@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-02 09:40:02
+ * @LastEditTime: 2019-08-02 16:32:02
  */
 
 const merge = require('webpack-merge');
@@ -78,7 +78,7 @@ module.exports = merge(common, {
       {
         test: /dt\..*\.css$/,
         exclude: /node_modules/,
-        include: path.resolve(__dirname, '../src/Components'),
+        include: path.resolve(__dirname, '../src'),
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

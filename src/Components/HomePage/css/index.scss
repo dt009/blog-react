@@ -5,13 +5,19 @@
  * @Date: 2019-07-24 22:29:07
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-07-31 15:49:30
+ * @LastEditTime: 2019-08-02 18:10:39
  */
+
+@import '../../../common/css/common.scss';
 
 .title {
   color: #00f;
+
+  @include fontSize(14px);
 }
 
 .container {
   background: #f00;
+
+  @include fontSize(14px);
 }

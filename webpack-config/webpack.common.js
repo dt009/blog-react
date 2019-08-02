@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-02 13:37:24
+ * @LastEditTime: 2019-08-02 13:38:20
  */
 
 const webpack = require('webpack');
@@ -57,7 +57,7 @@ module.exports = {
       '.jpg', '.png', '.gif', '.jpeg', '.svg',
     ],
     alias: {
-      comp: path.resolve(__dirname, '../src/component/'),
+      comp: path.resolve(__dirname, '../src/Component/'),
       utils: path.resolve(__dirname, '../src/utils/'),
       public: path.resolve(__dirname, '../src/public/'),
       common: path.resolve(__dirname, '../src/common/')

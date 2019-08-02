@@ -1,0 +1,121 @@
+/**
+ * @Description: Do not edit
+ * @Author: 段涛
+ * @AuthorEmail: 18363625031@163.com
+ * @Date: 2019-08-02 15:57:55
+ * @LastEditors: 段涛
+ * @AuthorMobile: 18363625031
+ * @LastEditTime: 2019-08-02 16:31:01
+ */
+
+* {
+  user-select: none;
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  text-size-adjust: none;
+  -moz-text-size-adjust: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* 修改默认盒模型 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 修正 IOS 和 Android 可点击元素的高亮颜色 */
+  -webkit-tap-highlight-color: transparent; /* i.e. Nexus5/Chrome and Kindle Fire HD 7'' */
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  text-size-adjust: none;
+}
+
+/* // 默认字体和背景色 */
+html,
+body {
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  line-height: 1;
+  color: #0a1432;
+}
+
+/* 清除内外边距 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+th,
+td,
+pre,
+fieldset,
+button,
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+  * 重置标签元素
+  * 1. Remove the gray background on active links in IE 10.
+  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+  * 3. 当在iOS上触摸并按住一个元素的时候，Safari会展示一个关于这个链接的callout信息。禁用该属性。
+  */
+a {
+  text-decoration: none;
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+  -webkit-touch-callout: none; /* 3 */
+  color: inherit;
+}
+
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+ul,
+li,
+ol {
+  list-style: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #999;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #999;
+}
+
+input:disabled {
+  opacity: 1;
+}
+
+textarea:disabled {
+  opacity: 1;
+}
