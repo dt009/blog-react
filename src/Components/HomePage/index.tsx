@@ -1,39 +1,31 @@
 /**
- * @Description: Do not edit
+ * @Description: 主页测试
  * @Author: 段涛
  * @AuthorEmail: 18363625031@163.com
  * @Date: 2019-07-23 22:14:08
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-02 18:10:50
+ * @LastEditTime: 2019-08-05 15:06:53
  */
 
 import * as React from 'react';
 import * as PageCss from './css/index.scss';
-// import * as ImgIcon from './img2.jpg';
-import Test from '../../doc/index.md';
-import './css/dt.markdown.css';
+import { Link } from 'react-router-dom';
 
-export interface HelloProps { compiler: string; framework: string }
+// const ArticleDetailsPage = React.lazy((): Promise<any> => import(/* webpackChunkName: 'ArticleDetailsPage'*/ '../ArticleDetailsPage')); // eslint-disable-line
 
-export class Hello extends React.Component<HelloProps, {name: string}> {
-  public constructor(props: HelloProps) {
-    super(props);
-    this.state = {
-      name: '段涛'
-    };
-  }
-  public render(): object {
+export default class Hello extends React.Component {
+  public render(): JSX.Element {
 
     return (
-      <div>
-        <div className={PageCss.title}>哈哈哈</div>
-        <div className="doc">
-          <div className="markdown-body">
-            <Test />
-          </div>
+      <React.Suspense fallback={<div>加载中....</div> }>
+        <div>
+          <div className={PageCss.title}>哈哈哈</div>
+          <Link to="/article">文案</Link>
+          {/* <ArticleDetailsPage></ArticleDetailsPage> */}
         </div>
-      </div>
+      </React.Suspense>
+
     );
   }
 }

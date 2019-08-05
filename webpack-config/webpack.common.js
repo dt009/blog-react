@@ -5,7 +5,7 @@
  * @Date: 2019-07-23 22:10:32
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-02 13:38:20
+ * @LastEditTime: 2019-08-05 15:41:34
  */
 
 const webpack = require('webpack');
@@ -22,12 +22,13 @@ module.exports = {
       chunks: 'all',
       cacheGroups: {
         default: false,
-        vendor: {
-          filename: '[name].bundle.js',
+        common: {
+          test: /[\\/]node_modules[\\/]/,
+          filename: 'js/[name].[chunkhash:6].js',
           chunks: 'all',
         },
         styles: {
-          name: 'style',
+          // filename: 'css/[name].css',
           test: /\.(scss|css)$/,
           chunks: 'all',
           enforce: true,
@@ -44,6 +45,7 @@ module.exports = {
 
   output: {
     filename: 'js/[name].[chunkhash:6].js',
+    chunkFilename: 'js/[name].[chunkhash:6].js',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/'
   },
@@ -69,6 +71,8 @@ module.exports = {
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       {
         test: /\.tsx?$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, '../src/'),
         use: [
           { loader: 'awesome-typescript-loader' },
           { loader: 'eslint-loader' },
@@ -77,6 +81,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
+        include: path.resolve(__dirname, '../src/'),
         use: [
           { loader: 'babel-loader' },
           { loader: 'eslint-loader' }

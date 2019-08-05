@@ -5,7 +5,7 @@
  * @Date: 2019-07-31 15:34:36
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-02 17:58:38
+ * @LastEditTime: 2019-08-02 19:16:07
  */
 
 .doc h1:hover .header-anchor,
@@ -838,7 +838,8 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #f6f8fa;
+  background-color: #aaa;
+  color: #fff;
   border-radius: 3px;
 }
 

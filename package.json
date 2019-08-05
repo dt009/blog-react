@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
@@ -21,6 +22,7 @@
     "@types/markdown-it-container": "^2.0.2",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
+    "@types/react-loadable": "^5.5.1",
     "@types/react-router": "^5.0.3",
     "@types/react-router-dom": "^4.3.4",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
@@ -62,6 +64,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-loadable": "^5.5.0",
     "react-router-dom": "^5.0.1",
     "sass-loader": "^7.1.0",
     "schema-utils": "^2.0.1",
