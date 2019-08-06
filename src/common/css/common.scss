@@ -5,14 +5,14 @@
  * @Date: 2019-08-02 16:33:29
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-02 17:23:32
+ * @LastEditTime: 2019-08-06 14:02:35
  */
 
 @mixin fontSize($size) {
   font-size: $size;
 
   [data-dpr="2"] & {
-    font-size: $size * 2;
+    font-size: (2 * $size);
   }
 
   [data-dpr="3"] & {

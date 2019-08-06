@@ -5,7 +5,7 @@
  * @Date: 2019-08-02 13:41:29
  * @LastEditors: 段涛
  * @AuthorMobile: 18363625031
- * @LastEditTime: 2019-08-05 16:15:00
+ * @LastEditTime: 2019-08-06 13:45:23
  */
 
 const setMetaEl = (): void => {
@@ -80,7 +80,7 @@ const getFont = (): void => {
   const ScreenWidth = window.screen.width;
   document.querySelector('html').style.fontSize = `${ fontSize }px`;
   if (ScreenWidth > 500) {
-    document.querySelector('html').style.fontSize = `100px`;
+    document.querySelector('html').style.fontSize = `50px`;
   }
 };
 
